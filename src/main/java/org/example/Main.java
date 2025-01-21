@@ -1,14 +1,15 @@
 package org.example;
 
-import org.example.model.Battle;
-import org.example.model.Capifire;
-import org.example.model.Capimon;
-import org.example.model.Capiwater;
-
-import java.util.HashSet;
+import org.example.model.Coach;
 
 public class Main {
     public static void main(String[] args) {
+
+
+
+        /*
+        Comentario de código de batallas ---
+
         HashSet<Capimon> capis = new HashSet();
         Capiwater blas = new Capiwater("Blas", 200, 300, true);
         Capifire fuegui = new Capifire("Fuegui", 400, 400, true);
@@ -29,5 +30,6 @@ public class Main {
         }
         capis.add(tipito);
         System.out.println("Ganaste la segunda, segundo capi añadido");
+        */
     }
 }

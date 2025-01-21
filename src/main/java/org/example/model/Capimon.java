@@ -1,7 +1,10 @@
 package org.example.model;
 
-public abstract class Capimon {
-    private String name;
+public class Capimon {
+
+
+
+    /*private String name;
     private int health;
     private int defense;
     private boolean isAlive;
@@ -10,6 +13,10 @@ public abstract class Capimon {
         this.name = name;
         this.health = health;
         this.isAlive = isAlive;
+    }
+
+    public Capimon() {
+
     }
 
     public String getName() {
@@ -51,6 +58,6 @@ public abstract class Capimon {
     public void reset(int health){
         this.health=health;
         this.isAlive=true;
-    }
+    }*/
 }
 

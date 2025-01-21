@@ -1,0 +1,2 @@
+Metodo de asignacion de capibaras jugadores y enemigos:
+A través del método setRandomType(), el mismo objeto Capimon puede ser tanto el jugador como el enemigo

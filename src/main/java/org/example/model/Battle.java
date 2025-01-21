@@ -3,6 +3,11 @@ package org.example.model;
 import java.util.Scanner;
 
 public class Battle {
+
+
+
+
+    /*
     private Capimon capi1;
     private Capimon capi2;
     private int capi1VidaFull;
@@ -14,6 +19,10 @@ public class Battle {
         this.capi2 = capi2;
         this.capi1VidaFull = capi1.getHealth();
         this.capi2VidaFull = capi2.getHealth();
+    }
+
+    public Battle() {
+
     }
 
     public boolean StartBattle() {
@@ -62,5 +71,5 @@ public class Battle {
     private void resetBattle() {
         capi1.reset(capi1VidaFull);
         capi2.reset(capi2VidaFull);
-    }
+    }*/
 }
