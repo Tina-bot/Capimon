@@ -1,6 +1,8 @@
 package org.example.model;
 
-public class Capimon {
+import org.example.service.CapimonTypes;
+
+public class Capimon  {
 
     String nombre;
     String tipo;
@@ -36,6 +38,7 @@ public class Capimon {
     public void setHealt(int healt) {
         this.healt = healt;
     }
+
 
 
 

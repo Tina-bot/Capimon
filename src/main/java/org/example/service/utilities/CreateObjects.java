@@ -9,13 +9,11 @@ public class CreateObjects {
 
     private  Coach coach = new Coach();
 
-    private  Capimon miCapimon = new Capimon("Pepe"); //funciona tanto como jugador como enemigo
+    private  Capimon miCapimon = new Capimon("Pepe");
 
     private  Capimon enemigo = new Capimon("Mario", "Agua");
 
-    private  Battle battle = new Battle(); //funcion podria funcionar mejor como una funcion en capimon siendo mas un metodo a llamar entre ellos
-
-    //Los siguientes son los metodos para acceder a las instancias
+    private  Battle battle = new Battle();
 
     public  Coach getCoach() {
         return coach;
