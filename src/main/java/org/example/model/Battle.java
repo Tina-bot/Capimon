@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class Battle {
 
-
-
+//metodo dentro del main, while
 
     /*
     private Capimon capi1;

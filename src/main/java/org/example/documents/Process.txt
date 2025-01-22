@@ -1,2 +1,56 @@
 Metodo de asignacion de capibaras jugadores y enemigos:
 A través del método setRandomType(), el mismo objeto Capimon puede ser tanto el jugador como el enemigo
+
+
+El estado del objeto se puede cambiar dinamicamente en su
+ momento de ejecución, por ejemplo usando métodos
+ setType y los démas que usemos para sus interacciones
+
+ Entonces según su contexto de ejecución el objeto actua como:
+
+ - Jugador (configuramos el estado del objeto con sus atributos y metodos correspondientes)
+
+ - Oponente (configuramos para este de forma aleatoria)
+
+ Se cambia el estado mediante los metodos
+  no el objeto ya que en fin ambos son lo mismo
+   actuando de formas distintas
+
+por ejemplo en los metodos de batalla se lo llamaria de esta manera:
+
+ public void battle(Capimon opponent) {
+        System.out.println(this.name + " se enfrenta a " + opponent.getName() + " de tipo " + opponent.getType());
+        this.attack();  // Aca el jugador elige el ataque
+        opponent.attack();  // Y en este caso el mismo objeto (Actuando como enemigo) elige su ataque
+    }
+
+   En este caso el capimon es aleatorio, pero como nosotras usamos orden
+   simplemente agregariamos o el numero de la batalla a la que deberia aparecer,
+   o el numero del capibara asignado a X batalla
+
+
+ Luego mediante el uso de la interfaz de ataques y un switch (por ejemplo)
+ Se maneja dinamicamente cada elemento del objeto pudiendo setear ademas la salud de ese tipo o alguna especificacion necesaria
+
+
+ switch (type) {
+         case "Fuego":
+             this.health = 120;
+             this.attacks = new String[]{"Pirotecnia", "Lanzallamas"};
+             break;
+
+         case "Agua":
+             this.health = 150;
+             this.attacks = new String[]{"Chorro de Agua", "Hidrobomba"};
+             break;
+
+         case "Planta":
+             this.health = 100;
+             this.attacks = new String[]{"Hojas Navaja", "Latigazo"};
+             break;
+     }
+
+     El jugador usa scanner para elegirlos y el enemigo un metodo aleatorio
+
+     En un futuro si se desea agregar una evolucion es tan simple como añadir
+     atributos, metodos y estado de guardado para mantener el nivel y guardar el nuevo.

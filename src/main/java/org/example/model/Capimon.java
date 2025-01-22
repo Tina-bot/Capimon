@@ -2,6 +2,44 @@ package org.example.model;
 
 public class Capimon {
 
+    String nombre;
+    String tipo;
+    int healt = 0;
+
+    public Capimon(String nombre) {
+
+    }
+
+    public Capimon(String nombre, String tipo) {
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getHealt() {
+        return healt;
+    }
+
+    public void setHealt(int healt) {
+        this.healt = healt;
+    }
+
+
+
+    //crear, uno para el nuestro y el otro enemigo. Cuando instanciemos el enemigo en el main
 
 
     /*private String name;

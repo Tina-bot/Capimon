@@ -7,23 +7,25 @@ import org.example.model.Coach;
 
 public class CreateObjects {
 
-    private static final Coach coach = new Coach();
+    private  Coach coach = new Coach();
 
-    private static final Capimon capimon = new Capimon(); //funciona tanto como jugador como enemigo
+    private  Capimon miCapimon = new Capimon("Pepe"); //funciona tanto como jugador como enemigo
 
-    private static final Battle battle = new Battle(); //funcion podria funcionar mejor como una funcion en capimon siendo mas un metodo a llamar entre ellos
+    private  Capimon enemigo = new Capimon("Mario", "Agua");
+
+    private  Battle battle = new Battle(); //funcion podria funcionar mejor como una funcion en capimon siendo mas un metodo a llamar entre ellos
 
     //Los siguientes son los metodos para acceder a las instancias
 
-    public static Coach getCoach() {
+    public  Coach getCoach() {
         return coach;
     }
 
-    public static Capimon getCapimon() {
-        return capimon;
+    public  Capimon getCapimon() {
+        return miCapimon;
     }
 
-    public static Battle getBattle() {
+    public  Battle getBattle() {
         return battle;
     }
 
