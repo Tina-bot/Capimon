@@ -1,7 +1,6 @@
 package org.example.service.utilities;
 
 
-import org.example.model.Battle;
 import org.example.model.Capimon;
 import org.example.model.Coach;
 
