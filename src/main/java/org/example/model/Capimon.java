@@ -1,63 +1,18 @@
 package org.example.model;
 
-import org.example.service.CapimonTypes;
+import java.util.Scanner;
 
-public class Capimon  {
-
-    String nombre;
-    String tipo;
-    int healt = 0;
-
-    public Capimon(String nombre) {
-
-    }
-
-    public Capimon(String nombre, String tipo) {
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getHealt() {
-        return healt;
-    }
-
-    public void setHealt(int healt) {
-        this.healt = healt;
-    }
-
-
-
-
-    //crear, uno para el nuestro y el otro enemigo. Cuando instanciemos el enemigo en el main
-
-
-    /*private String name;
-    private int health;
-    private int defense;
-    private boolean isAlive;
-
-    public Capimon(String name, int health, int defense, boolean isAlive) {
-        this.name = name;
-        this.health = health;
-        this.isAlive = isAlive;
-    }
+public class Capimon {
+    private String name;
+    private String category;
+    private int energy = 0;
 
     public Capimon() {
+    }
 
+    public Capimon(int energy, String category) {
+        setCategory(category);
+        this.energy = energy;
     }
 
     public String getName() {
@@ -68,37 +23,56 @@ public class Capimon  {
         this.name = name;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public int getEnergy() {
+        return energy;
     }
 
-    public int getDefense() {
-        return defense;
+    public void setEnergy(int energy) {
+        this.energy = energy;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
+    public String getCategory() {
+        return category;
     }
 
-    public int getHealth() {
-        return health;
+    // Validación de los tipos de capimones
+    public void setCategory(String category) {
+        if (category.equalsIgnoreCase("agua")) {
+            this.category = "agua";
+            this.name = "Aquabara";
+        } else if (category.equalsIgnoreCase("fuego")) {
+            this.category = "fuego";
+            this.name = "Capibrasas";
+        } else if (category.equalsIgnoreCase("planta")) {
+            this.category = "planta";
+            this.name = "Capibrotes";
+        } else {
+            throw new IllegalArgumentException("Categoría inválida. Debe ser agua, fuego o planta.");
+        }
     }
 
-    public void takeDamage(int damage) {
-        health -= damage;
-        if (health <= 0) setAlive(false);
-    }
-    public void setAlive(boolean alive) {
-        isAlive = alive;
-    }
+    public void ingresarCategoriaPorTeclado() {
+        Scanner scanner = new Scanner(System.in);
+        String categoriaIngresada = "";
+        while (true) {
+            System.out.print("Ingrese la categoría (agua, fuego, planta): ");
+            categoriaIngresada = scanner.nextLine();
 
-    public boolean isAlive() {
-        return health >= 0;
+            try {
+                setCategory(categoriaIngresada);
+                System.out.println("Categoría: " + getCategory());
+                mostrarInformacion();
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
-
-    public void reset(int health){
-        this.health=health;
-        this.isAlive=true;
-    }*/
+    public void mostrarInformacion() {
+        System.out.println("\nInformación del Capimon:");
+        System.out.println("Nombre: " + getName());
+        System.out.println("Categoría: " + getCategory());
+        System.out.println("Energía: " + getEnergy());
+    }
 }
 
