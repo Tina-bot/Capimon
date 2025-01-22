@@ -8,11 +8,14 @@ public class Main {
 
         Coach coach = new Coach();
 
+        //Ingreso Nickname
+        coach.setNickname();
+
         //Asignación de personaje al usuario con metodo random
-        String character = Coach.assingCharacter(coach);
+        String character = Coach.assignCharacter(coach);
         System.out.println("Capibara asignado: " + character);
 
-        //Incorporación de capibaras al usuario al perder
+        //Incorporación de capibaras al usuario
         coach.setCapimonsUser(character);
         System.out.println("Capibaras del usuario: " + coach.getCapimonsUser());
 
