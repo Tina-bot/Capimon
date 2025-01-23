@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.model.Coach;
 import org.example.model.Capimon;
 import org.example.service.utilities.CreateObjects;
 
