@@ -4,29 +4,21 @@ import org.example.service.CapimonTypes;
 
 public class FinalBoss extends Coach implements CapimonTypes {
 
-
-
     @Override
     public void attack() {
-        if (getCategory() == null) {
-            throw new IllegalStateException("Error al cargar boss final");
-
+        if (!isBossFinal()) {
+            throw new IllegalStateException("Este no es el boss final.");
         }
-        System.out.println("\nAtaques disponibles:");
 
-
-        switch (getCategory().toLowerCase()) {
-            case "boss":
-                System.out.println("0. Placaje (Resta 10 energía, -15 energía del enemigo)."); // Ataque básico
-                System.out.println("1. Cofre explosivo (resta 0 energia, -99 vida)"); // Ataque básico
-                System.out.println("2. Cataclismo unitario (resta 0 energia, -150 vida)"); // Ataque básico
-
-                break;
-
-        }
+        System.out.println("\nAtaques disponibles del Boss Final:");
+        System.out.println("0. Placaje (Resta 10 energía, -15 energía del enemigo).");
+        System.out.println("1. Cofre explosivo (Resta 0 energía, -99 vida).");
+        System.out.println("2. Cataclismo unitario (Resta 0 energía, -150 vida).");
     }
 
-    private String getCategory() {
-        return getCategory();
+    private boolean isBossFinal() {
+        return "boss".equalsIgnoreCase("iria el getCategory");
     }
+
+
 }

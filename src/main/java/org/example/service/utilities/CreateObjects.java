@@ -12,6 +12,8 @@ public class CreateObjects {
 
     private  Capimon enemy = new Capimon();
 
+    private Coach bossFinal = new Coach();
+
 
     public  Coach getCoach() {
         return coach;
@@ -23,6 +25,10 @@ public class CreateObjects {
 
     public  Capimon getEnemy() {
         return enemy;
+    }
+
+    public Coach getBossFinal() {
+        return bossFinal;
     }
 
 }
