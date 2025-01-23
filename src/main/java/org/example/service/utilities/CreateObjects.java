@@ -7,7 +7,7 @@ public class CreateObjects {
     private  Coach coach = new Coach();
     private  Capimon miCapimon = new Capimon("Pepe");
     private  Capimon enemigo = new Capimon("Mario", "Agua");
-    private  Battle battle = new Battle(miCapimon, enemigo);
+    private  Battle battle = new Battle(coach, miCapimon, enemigo);
     public  Coach getCoach() {
         return coach;    }
     public  Capimon getCapimon() {

@@ -1,5 +1,7 @@
 package org.example.model;
 
+import org.example.service.CapimonTypeDmg;
+
 import java.util.Scanner;
 
 public class Battle {
@@ -7,10 +9,10 @@ public class Battle {
     private Capimon playerCapi;
     private Capimon enemyCapi;
 
-    public Battle(Coach player, Capimon enemyCapi) {
-        this.playerCoach = player;
-     /*TODO: Hacer metodo para que saque el primero de la array de coach, la weafome
-       this.playerCapi = playerCoach.getCapimonsUser().toArray()[0]; */
+    public Battle(Coach playerCoach, Capimon playerCapi, Capimon enemyCapi) {
+       this.playerCoach = playerCoach;
+      /* this.playerCapi = getFirstCapi(playerCoach);*/
+        this.playerCapi = playerCapi;
         this.enemyCapi = enemyCapi;
     }
 
@@ -21,7 +23,7 @@ public class Battle {
                     " y " + enemyCapi.getName());
 
             playerCapi.setEnergy(100);
-            enemyCapi.setEnergy(100); //aca no deberia setearlos yo
+            enemyCapi.setEnergy(100);
 
             boolean battleResult = executeBattle(scanner);
 
@@ -29,6 +31,7 @@ public class Battle {
                 System.out.println("\nGanaste, muy bien!");
                 playerCoach.setCapimonsUser(enemyCapi.getName());
                 System.out.println("Se te unio " + enemyCapi.getName() + " ,felicidades");
+                System.out.println(playerCoach.getCapimonsUser());
                 break;
             } else {
                 System.out.println("\nPerdiste :(, se reiniciara la batalla");
@@ -52,10 +55,10 @@ public class Battle {
 
             switch (choise) {
                 case 1:
-                    attack(playerCapi, enemyCapi); //basico
+                    attack(playerCapi, enemyCapi, false);
                     break;
                 case 2:
-                    attack(playerCapi, enemyCapi); //acordate, falta que calcule si es especial
+                    attack(playerCapi, enemyCapi, true);
                     break;
                 default:
                     System.out.println("Eleccion invalida, perdes turno por manco");
@@ -64,7 +67,7 @@ public class Battle {
                 return true; //jugador gana
             }
             //turno enemigo
-            attack(enemyCapi, playerCapi);
+            attack(enemyCapi, playerCapi, false);
             if (playerCapi.getEnergy() <= 0) {
                 return false; //te gana
             }
@@ -73,14 +76,18 @@ public class Battle {
     }
 
 
-    private void attack(Capimon attacker, Capimon target) {
-        int damage = 80; //falta logica de calcular y si es ataque de tipo (CapimonTypeDmg usa)
+    private void attack(Capimon attacker, Capimon target, boolean isSpecial) {
+        int damage= CapimonTypeDmg.calculateDamage(attacker.getCategory(), target.getCategory(), isSpecial);
         target.setEnergy(target.getEnergy() - damage);
         System.out.println(attacker.getName() + " ataca haciendo " + damage + " de daños a "
                 + target.getName());
     }
-}
 
+    private Capimon getFirstCapi (Coach coach){
+        String firstCapi = (String) coach.getCapimonsUser().toArray()[0];
+        return new Capimon(firstCapi);
+    }
+}
 
 
     /*
@@ -148,4 +155,3 @@ public class Battle {
         capi1.reset(capi1VidaFull);
         capi2.reset(capi2VidaFull);
     }*/
-}
