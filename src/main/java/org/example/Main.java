@@ -9,10 +9,11 @@ public class Main {
         Coach coach = new Coach();
 
         //Ingreso Nickname
-        coach.setNickname();
+        coach.setWelcomeMessage();
 
         //Asignación de personaje al usuario con metodo random
         String character = Coach.assignCharacter(coach);
+        System.out.println("");
         System.out.println("Capibara asignado: " + character);
 
         //Incorporación de capibaras al usuario
