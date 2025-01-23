@@ -58,12 +58,4 @@ public class Coach {
     public HashSet<Capimon> getCapimonsUser() {
         return capimonsUser;
     }
-
-//    public void setCapimonsUser(Capimon capimonNew) {
-//        capimonsUser.add(capimonNew);
-//    }
-//
-//    public HashSet<Capimon> getCapimonsUser() {
-//        return capimonsUser;
-//    }
 }

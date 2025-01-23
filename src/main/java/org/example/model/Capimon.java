@@ -2,8 +2,6 @@ package org.example.model;
 
 import org.example.service.CapimonTypes;
 
-import java.util.Scanner;
-
 public class Capimon implements CapimonTypes {
     private String name;
     private String category;
