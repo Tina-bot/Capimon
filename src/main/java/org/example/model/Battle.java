@@ -1,10 +1,93 @@
 package org.example.model;
 
+import org.example.service.CapimonTypeDmg;
+
 import java.util.Scanner;
 
 public class Battle {
+    private Coach playerCoach;
+    private Capimon playerCapi;
+    private Capimon enemyCapi;
+
+    public Battle(Coach playerCoach, Capimon playerCapi, Capimon enemyCapi) {
+       this.playerCoach = playerCoach;
+      /* this.playerCapi = getFirstCapi(playerCoach);*/
+        this.playerCapi = playerCapi;
+        this.enemyCapi = enemyCapi;
+    }
+
+    public void startBattle() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n Se abre la pelea entre " + playerCapi.getName() +
+                    " y " + enemyCapi.getName());
+
+            playerCapi.setEnergy(100);
+            enemyCapi.setEnergy(100);
+
+            boolean battleResult = executeBattle(scanner);
+
+            if (battleResult) {
+                System.out.println("\nGanaste, muy bien!");
+                playerCoach.setCapimonsUser(enemyCapi);
+                System.out.println("Se te unio " + enemyCapi.getName() + " ,felicidades");
+                System.out.println(playerCoach.getCapimonsUser());
+                break;
+            } else {
+                System.out.println("\nPerdiste :(, se reiniciara la batalla");
+            }
+        }
+    }
+
+    public boolean executeBattle(Scanner scanner) {
+        while (playerCapi.getEnergy() > 0 && enemyCapi.getEnergy() > 0) {
+            System.out.println("\n Info:");
+            System.out.println(playerCapi.getName() + " [Tuyo] - Vida: " + playerCapi.getEnergy());
+            System.out.println(enemyCapi.getName() + " [Enemigo] - Vida: " + enemyCapi.getEnergy());
+
+            //turno propio
+            System.out.println("\nEs tu turno, que ataque queres usar?");
+
+            System.out.println("1-Ataque basico");
+            System.out.println("2- Ataque especial");
+            System.out.println("Tu eleccion: ");
+            int choise = scanner.nextInt();
+
+            switch (choise) {
+                case 1:
+                    attack(playerCapi, enemyCapi, false);
+                    break;
+                case 2:
+                    attack(playerCapi, enemyCapi, true);
+                    break;
+                default:
+                    System.out.println("Eleccion invalida, perdes turno por manco");
+            }
+            if (enemyCapi.getEnergy() <= 0) {
+                return true; //jugador gana
+            }
+            //turno enemigo
+            attack(enemyCapi, playerCapi, false);
+            if (playerCapi.getEnergy() <= 0) {
+                return false; //te gana
+            }
+        }
+        return false;
+    }
 
 
+    private void attack(Capimon attacker, Capimon target, boolean isSpecial) {
+        int damage= CapimonTypeDmg.calculateDamage(attacker.getCategory(), target.getCategory(), isSpecial);
+        target.setEnergy(target.getEnergy() - damage);
+        System.out.println(attacker.getName() + " ataca haciendo " + damage + " de daños a "
+                + target.getName());
+    }
+
+   /* private Capimon getFirstCapi (Coach coach){
+        String firstCapi = (String) coach.getCapimonsUser().toArray()[0];
+        return new Capimon(firstCapi);
+    } */
+}
 
 
     /*
@@ -72,4 +155,3 @@ public class Battle {
         capi1.reset(capi1VidaFull);
         capi2.reset(capi2VidaFull);
     }*/
-}

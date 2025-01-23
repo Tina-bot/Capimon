@@ -1,28 +1,34 @@
 package org.example.service.utilities;
 
-
 import org.example.model.Capimon;
 import org.example.model.Coach;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateObjects {
 
-    private  Coach coach = new Coach();
+    private Coach coach;
+    private List<Capimon> capimonList = new ArrayList<>();
 
-    private  Capimon miCapimon = new Capimon();
+    public CreateObjects() {
+        // Crear los tres Capimones y agregarlos a la lista
+        Capimon capibrote = new Capimon(100, "planta");
+        Capimon capibrasa = new Capimon(100, "fuego");
+        Capimon aquabara = new Capimon(100, "agua");
 
-    private  Capimon enemy = new Capimon();
+        capimonList.add(capibrote);
+        capimonList.add(capibrasa);
+        capimonList.add(aquabara);
 
+    }
 
-    public  Coach getCoach() {
+    // Métodos para obtener los objetos
+    public Coach getCoach() {
         return coach;
     }
 
-    public  Capimon getCapimon() {
-        return miCapimon;
+    public List<Capimon> getCapimonList() {
+        return capimonList;
     }
-
-    public  Capimon getEnemy() {
-        return enemy;
-    }
-
 }
