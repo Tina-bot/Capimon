@@ -4,6 +4,30 @@ import org.example.service.CapimonTypes;
 
 public class FinalBoss extends Coach implements CapimonTypes {
 
+    private String nameBoss = "CapitaNegra Mockinator";
+    private String category = "oscuro";
+    private int energy = 3000;
+
+    // Getters
+    public String getCategory() {
+        return category;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public String getNameBoss() {
+        return nameBoss;
+    }
+
+    public String showBossData() {
+        return "Información del Boss Final:" +
+                "\nNombre: " + getNameBoss() +
+                "\nCategoría: " + getCategory() +
+                "\nEnergía: " + getEnergy();
+    }
+
     @Override
     public void attack() {
         if (!isBossFinal()) {
@@ -17,8 +41,6 @@ public class FinalBoss extends Coach implements CapimonTypes {
     }
 
     private boolean isBossFinal() {
-        return "boss".equalsIgnoreCase("iria el getCategory");
+        return "oscuro".equalsIgnoreCase(getCategory());
     }
-
-
 }

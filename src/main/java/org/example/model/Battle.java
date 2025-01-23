@@ -29,7 +29,7 @@ public class Battle {
 
             if (battleResult) {
                 System.out.println("\nGanaste, muy bien!");
-                playerCoach.setCapimonsUser(enemyCapi.getName());
+                playerCoach.setCapimonsUser(enemyCapi);
                 System.out.println("Se te unio " + enemyCapi.getName() + " ,felicidades");
                 System.out.println(playerCoach.getCapimonsUser());
                 break;

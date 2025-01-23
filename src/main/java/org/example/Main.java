@@ -1,7 +1,8 @@
 package org.example;
 
-import org.example.model.Capimon;
 import org.example.model.Coach;
+import org.example.model.Capimon;
+import org.example.model.FinalBoss;
 import org.example.service.utilities.CreateObjects;
 
 public class Main {
@@ -12,12 +13,27 @@ public class Main {
         coach.setWelcomeMessage();
 
         //Asignación de personaje al usuario con metodo random
-        String character = Coach.assignCharacter(coach);
-        System.out.println("");
-        System.out.println("Capibara asignado: " + character);
+        Capimon character = Coach.assignCharacter(coach);
+        System.out.println(" ");
+        System.out.println("Capibara asignado: " + character.getName());
+        System.out.println(character.showInformation());
+
 
         //Incorporación de capibaras al usuario
         coach.setCapimonsUser(character);
-        System.out.println("Capibaras del usuario: " + coach.getCapimonsUser());
+        System.out.println("Capimones del usuario: " + coach.getCapimonsUser().toString());
+        character.attack();
+
+        //Boss final
+        FinalBoss finalBoss = new FinalBoss();
+        System.out.println(finalBoss.showBossData());
+
+        //esto deberia ir en batalla
+        try {
+            finalBoss.attack();
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
