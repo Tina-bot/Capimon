@@ -10,7 +10,7 @@ public class CreateObjects {
 
     private  Capimon miCapimon = new Capimon();
 
-    private  Capimon enemigo = new Capimon();
+    private  Capimon enemy = new Capimon();
 
 
     public  Coach getCoach() {
@@ -21,6 +21,8 @@ public class CreateObjects {
         return miCapimon;
     }
 
-
+    public  Capimon getEnemy() {
+        return enemy;
+    }
 
 }
