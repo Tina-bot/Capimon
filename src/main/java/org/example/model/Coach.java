@@ -13,6 +13,7 @@ public class Coach {
     Capimon capibrote = new Capimon(100, "planta");
     Capimon capibrasa = new Capimon(100, "fuego");
     Capimon aquabara = new Capimon(100, "agua");
+    Capimon capishadow = new Capimon(300, "oscuro");
 
     public Coach() {
         this.typesCapimons = new ArrayList<>();
@@ -20,6 +21,7 @@ public class Coach {
         typesCapimons.add(capibrote);
         typesCapimons.add(capibrasa);
         typesCapimons.add(aquabara);
+        typesCapimons.add(capishadow);
     }
 
     public String getName() {
@@ -46,9 +48,9 @@ public class Coach {
     }
 
     public static Capimon assignCharacter(Coach coach) {
-        Random random = new Random();
-        int index = random.nextInt(coach.typesCapimons.size());
-        return coach.typesCapimons.get(index);
+            Random random = new Random();
+            int index = random.nextInt(3);
+            return coach.typesCapimons.get(index);
     }
 
     public void setCapimonsUser(Capimon capimonNew) {
