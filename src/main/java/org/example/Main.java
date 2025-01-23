@@ -1,11 +1,10 @@
 package org.example;
 
-import org.example.model.Coach;
+import org.example.model.Capimon;
+import org.example.service.utilities.CreateObjects;
 
 public class Main {
-
     public static void main(String[] args) {
-
         Coach coach = new Coach();
 
         //Ingreso Nickname
