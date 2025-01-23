@@ -51,6 +51,9 @@ public class Capimon implements CapimonTypes {
         } else if (category.equalsIgnoreCase("planta")) {
             this.category = "planta";
             this.name = "Capibrotes";
+        }else if (category.equalsIgnoreCase("oscuro")) {
+            this.category = "oscuro";
+            this.name = "Capishadow";
         } else {
             throw new IllegalArgumentException("Categoría inválida. Debe ser agua, fuego o planta.");
         }
@@ -83,6 +86,10 @@ public class Capimon implements CapimonTypes {
                 System.out.println("1. Látigo cepa (-20 energía, -30 energía del enemigo).");
                 System.out.println("2. Navaja afilada (-50 energía, -70 energía del enemigo).");
                 break;
+            case "oscuro":
+                System.out.println("0. Placaje (Resta 10 energía, -15 energía del enemigo).");
+                System.out.println("1. Cofre explosivo (Resta 0 energía, -99 vida).");
+                System.out.println("2. Cataclismo unitario (Resta 0 energía, -150 vida).");
             default:
                 throw new IllegalStateException("Categoría desconocida: " + getCategory());
         }
