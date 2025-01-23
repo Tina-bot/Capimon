@@ -26,11 +26,19 @@ public class Coach {
         this.name = name;
     }
 
-    public void setNickname(){
+    public void setWelcomeMessage() {
+        System.out.println("¡Hola forastero! Veo que eres nuevo por aquí. ¿Cómo es tu nombre?");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese su nickname de entrenador: ");
         this.setName(scanner.nextLine());
-        System.out.println("¡Bienvenido " + this.getName() + " a la Liga de los Capibara!");
+        System.out.println("¡Bienvenido " + this.getName() + " a Pueblo Capibara! Aquí comienza tu aventura.");
+        System.out.println("Tendrás que superar tres batallas contra " +
+                "distintos capimones del tipo: fuego, agua y planta.");
+
+        System.out.println("Si consigues la victoria en los tres duelos, enfrentaras al boss final: " +
+                "Capibarco Pirata.");
+
+        System.out.println("Pero tranquilo, no estarás solo: aquí" +
+                " te asignamos a tu compañero Capimon para que te acompañe durante el viaje. ¡Mucha suerte!");
     }
 
     public static String assignCharacter(Coach coach) {

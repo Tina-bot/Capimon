@@ -11,16 +11,17 @@ public class Main {
         Capimon ally = new Capimon(100, "planta");
 
         //Ingreso Nickname
-        coach.setNickname();
+        coach.setWelcomeMessage();
 
         //Asignación de personaje al usuario con metodo random
         String character = Coach.assignCharacter(coach);
+        System.out.println(" ");
         System.out.println("Capibara asignado: " + character);
 
         //Incorporación de capibaras al usuario
         coach.setCapimonsUser(character);
         System.out.println("Capibaras del usuario: " + coach.getCapimonsUser());
-
+        System.out.println("_______________________");
         Battle battle1 = new Battle(coach, ally, enemy);
         battle1.startBattle();
 
