@@ -1,14 +1,13 @@
 package org.example;
 
-import org.example.model.CapiShadow;
-import org.example.model.Coach;
-import org.example.model.Capimon;
-import org.example.model.FinalBoss;
+import org.example.model.*;
 import org.example.service.utilities.CreateObjects;
 
 public class Main {
     public static void main(String[] args) {
-            Coach coach = new Coach();
+        Coach coach = new Coach();
+        Capimon enemy = new Capimon( 100, "fuego");
+        Capimon ally = new Capimon(100, "planta");
 
      //Ingreso Nickname
       coach.setWelcomeMessage();
@@ -25,15 +24,11 @@ public class Main {
       System.out.println("Capimones del usuario: " + coach.getCapimonsUser().toString());
        character.attack();
 
-        //Boss final
-        FinalBoss finalBoss = new FinalBoss();
-        CapiShadow capiShadow = new CapiShadow(300, "oscuro", "CapiShadow");
-
-        System.out.println(finalBoss.showBossData());
-        System.out.println(capiShadow.showDataShadow());
-
-        capiShadow.attack();
-
+        coach.setCapimonsUser(character);
+        System.out.println("Capibaras del usuario: " + coach.getCapimonsUser());
+        System.out.println("_______________________");
+        Battle battle1 = new Battle(coach, ally, enemy);
+        battle1.startBattle();
 
 
 

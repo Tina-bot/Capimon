@@ -10,8 +10,8 @@ public class Battle {
     private Capimon enemyCapi;
 
     public Battle(Coach playerCoach, Capimon playerCapi, Capimon enemyCapi) {
-       this.playerCoach = playerCoach;
-      /* this.playerCapi = getFirstCapi(playerCoach);*/
+        this.playerCoach = playerCoach;
+        /* this.playerCapi = getFirstCapi(playerCoach);*/
         this.playerCapi = playerCapi;
         this.enemyCapi = enemyCapi;
     }
@@ -83,10 +83,10 @@ public class Battle {
                 + target.getName());
     }
 
-   /* private Capimon getFirstCapi (Coach coach){
-        String firstCapi = (String) coach.getCapimonsUser().toArray()[0];
-        return new Capimon(firstCapi);
-    } */
+    private Capimon getFirstCapi (Coach coach){
+        Capimon firstCapi = (Capimon) coach.getCapimonsUser().toArray()[0];
+        return new Capimon(100,firstCapi.getName());
+    }
 }
 
 
