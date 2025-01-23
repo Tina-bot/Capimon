@@ -2,45 +2,28 @@ package org.example.model;
 
 import org.example.service.CapimonTypes;
 
-public class FinalBoss extends Coach implements CapimonTypes {
+public class FinalBoss extends Coach {
 
     private String nameBoss = "CapitaNegra Mockinator";
-    private String category = "oscuro";
-    private int energy = 3000;
+    private CapiShadow capimon;
 
-    // Getters
-    public String getCategory() {
-        return category;
+    // Constructor
+    public FinalBoss() {
+       this.capimon = new CapiShadow(300, "oscuro", "CapiShadow");
     }
 
-    public int getEnergy() {
-        return energy;
-    }
 
     public String getNameBoss() {
         return nameBoss;
     }
 
+    public CapiShadow getCapimon() {
+        return capimon;
+    }
+
     public String showBossData() {
         return "Información del Boss Final:" +
-                "\nNombre: " + getNameBoss() +
-                "\nCategoría: " + getCategory() +
-                "\nEnergía: " + getEnergy();
+                "\nNombre: " + getNameBoss();
     }
 
-    @Override
-    public void attack() {
-        if (!isBossFinal()) {
-            throw new IllegalStateException("Este no es el boss final.");
-        }
-
-        System.out.println("\nAtaques disponibles del Boss Final:");
-        System.out.println("0. Placaje (Resta 10 energía, -15 energía del enemigo).");
-        System.out.println("1. Cofre explosivo (Resta 0 energía, -99 vida).");
-        System.out.println("2. Cataclismo unitario (Resta 0 energía, -150 vida).");
-    }
-
-    private boolean isBossFinal() {
-        return "oscuro".equalsIgnoreCase(getCategory());
-    }
 }
