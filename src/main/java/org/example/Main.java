@@ -1,11 +1,14 @@
 package org.example;
 
-import org.example.model.Coach;
-import org.example.model.Capimon;
+import org.example.model.*;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         Coach coach = new Coach();
+//        Capimon enemy = new Capimon(100, "fuego");
+//        Capimon ally = new Capimon(100, "planta");
 
         //Ingreso Nickname
         coach.setWelcomeMessage();
@@ -20,6 +23,16 @@ public class Main {
         coach.setCapimonsUser(character);
         System.out.println("Capimones del usuario: " + coach.getCapimonsUser().toString());
         character.attack();
+
+        coach.setCapimonsUser(character);
+        System.out.println("_______________________");
+
+        ArrayList<Capimon> enemies = coach.getTypesCapimons();
+        for(int i = 0; i <= enemies.size(); i++) {
+            Capimon enemy = enemies.get(i);
+            Battle battle = new Battle(coach, character, enemy);
+            battle.startBattle();
+        }
 
     }
 }

@@ -53,6 +53,10 @@ public class Coach {
             return coach.typesCapimons.get(index);
     }
 
+    public ArrayList<Capimon> getTypesCapimons() {
+        return typesCapimons;
+    }
+
     public void setCapimonsUser(Capimon capimonNew) {
         capimonsUser.add(capimonNew);
     }
