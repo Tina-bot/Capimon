@@ -19,6 +19,5 @@ public class Main {
         //Incorporación de capibaras al usuario
         coach.setCapimonsUser(character);
         System.out.println("Capibaras del usuario: " + coach.getCapimonsUser());
-
     }
 }
