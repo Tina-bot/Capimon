@@ -3,7 +3,83 @@ package org.example.model;
 import java.util.Scanner;
 
 public class Battle {
+    private Coach playerCoach;
+    private Capimon playerCapi;
+    private Capimon enemyCapi;
 
+    public Battle(Coach player, Capimon enemyCapi) {
+        this.playerCoach = player;
+     /*TODO: Hacer metodo para que saque el primero de la array de coach, la weafome
+       this.playerCapi = playerCoach.getCapimonsUser().toArray()[0]; */
+        this.enemyCapi = enemyCapi;
+    }
+
+    public void startBattle() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n Se abre la pelea entre " + playerCapi.getName() +
+                    " y " + enemyCapi.getName());
+
+            playerCapi.setEnergy(100);
+            enemyCapi.setEnergy(100); //aca no deberia setearlos yo
+
+            boolean battleResult = executeBattle(scanner);
+
+            if (battleResult) {
+                System.out.println("\nGanaste, muy bien!");
+                playerCoach.setCapimonsUser(enemyCapi.getName());
+                System.out.println("Se te unio " + enemyCapi.getName() + " ,felicidades");
+                break;
+            } else {
+                System.out.println("\nPerdiste :(, se reiniciara la batalla");
+            }
+        }
+    }
+
+    public boolean executeBattle(Scanner scanner) {
+        while (playerCapi.getEnergy() > 0 && enemyCapi.getEnergy() > 0) {
+            System.out.println("\n Info:");
+            System.out.println(playerCapi.getName() + " [Tuyo] - Vida: " + playerCapi.getEnergy());
+            System.out.println(enemyCapi.getName() + " [Enemigo] - Vida: " + enemyCapi.getEnergy());
+
+            //turno propio
+            System.out.println("\nEs tu turno, que ataque queres usar?");
+
+            System.out.println("1-Ataque basico");
+            System.out.println("2- Ataque especial");
+            System.out.println("Tu eleccion: ");
+            int choise = scanner.nextInt();
+
+            switch (choise) {
+                case 1:
+                    attack(playerCapi, enemyCapi); //basico
+                    break;
+                case 2:
+                    attack(playerCapi, enemyCapi); //acordate, falta que calcule si es especial
+                    break;
+                default:
+                    System.out.println("Eleccion invalida, perdes turno por manco");
+            }
+            if (enemyCapi.getEnergy() <= 0) {
+                return true; //jugador gana
+            }
+            //turno enemigo
+            attack(enemyCapi, playerCapi);
+            if (playerCapi.getEnergy() <= 0) {
+                return false; //te gana
+            }
+        }
+        return false;
+    }
+
+
+    private void attack(Capimon attacker, Capimon target) {
+        int damage = 80; //falta logica de calcular y si es ataque de tipo (CapimonTypeDmg usa)
+        target.setEnergy(target.getEnergy() - damage);
+        System.out.println(attacker.getName() + " ataca haciendo " + damage + " de daños a "
+                + target.getName());
+    }
+}
 
 
 

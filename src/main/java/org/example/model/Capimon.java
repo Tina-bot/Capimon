@@ -1,63 +1,84 @@
 package org.example.model;
+import org.example.service.CapimonTypes;
 
-public class Capimon {
+import java.util.Scanner;
 
+    public class Capimon {
+        private String name;
+        private String category;
+        private int energy = 0;
 
+        public Capimon() {
+        }
+        public Capimon(String nombre) {
 
-    /*private String name;
-    private int health;
-    private int defense;
-    private boolean isAlive;
+        }
 
-    public Capimon(String name, int health, int defense, boolean isAlive) {
-        this.name = name;
-        this.health = health;
-        this.isAlive = isAlive;
-    }
+        public Capimon(String nombre, String tipo) {
+        }
 
-    public Capimon() {
+        public Capimon(int energy, String category) {
+            setCategory(category);
+            this.energy = energy;
+        }
 
-    }
+        public String getName() {
+            return name;
+        }
 
-    public String getName() {
-        return name;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        public int getEnergy() {
+            return energy;
+        }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
+        public void setEnergy(int energy) {
+            this.energy = energy;
+        }
 
-    public int getDefense() {
-        return defense;
-    }
+        public String getCategory() {
+            return category;
+        }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
+        // Validación de los tipos de capimones
+        public void setCategory(String category) {
+            if (category.equalsIgnoreCase("agua")) {
+                this.category = "agua";
+                this.name = "Aquabara";
+            } else if (category.equalsIgnoreCase("fuego")) {
+                this.category = "fuego";
+                this.name = "Capibrasas";
+            } else if (category.equalsIgnoreCase("planta")) {
+                this.category = "planta";
+                this.name = "Capibrotes";
+            } else {
+                throw new IllegalArgumentException("Categoría inválida. Debe ser agua, fuego o planta.");
+            }
+        }
 
-    public int getHealth() {
-        return health;
-    }
+        public void ingresarCategoriaPorTeclado() {
+            Scanner scanner = new Scanner(System.in);
+            String categoriaIngresada = "";
+            while (true) {
+                System.out.print("Ingrese la categoría (agua, fuego, planta): ");
+                categoriaIngresada = scanner.nextLine();
 
-    public void takeDamage(int damage) {
-        health -= damage;
-        if (health <= 0) setAlive(false);
-    }
-    public void setAlive(boolean alive) {
-        isAlive = alive;
-    }
-
-    public boolean isAlive() {
-        return health >= 0;
-    }
-
-    public void reset(int health){
-        this.health=health;
-        this.isAlive=true;
-    }*/
+                try {
+                    setCategory(categoriaIngresada);
+                    System.out.println("Categoría: " + getCategory());
+                    mostrarInformacion();
+                    break;
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        public void mostrarInformacion() {
+            System.out.println("\nInformación del Capimon:");
+            System.out.println("Nombre: " + getName());
+            System.out.println("Categoría: " + getCategory());
+            System.out.println("Energía: " + getEnergy());
+        }
 }
-
