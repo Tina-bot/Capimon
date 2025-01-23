@@ -13,6 +13,10 @@ public class Capimon implements CapimonTypes {
 
     }
 
+    public String toString() {
+        return name;
+    }
+
     public Capimon(int energy, String category) {
         setCategory(category);
         this.energy = energy;
@@ -54,30 +58,9 @@ public class Capimon implements CapimonTypes {
         }
     }
 
-    public void ingresarCategoriaPorTeclado() {
-        Scanner scanner = new Scanner(System.in);
-        String categoriaIngresada = "";
-        while (true) {
-            System.out.print("Ingrese la categoría (agua, fuego, planta): ");
-            categoriaIngresada = scanner.nextLine();
-
-            try {
-                setCategory(categoriaIngresada);
-                System.out.println("Categoría: " + getCategory());
-                mostrarInformacion();
-                break;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+    public String showInformation() {
+        return "Información del Capimon: " + "\nNombre: " + getName() + "\nCategoría: " + getCategory() + "\nEnergía: " + getEnergy();
     }
-    public void mostrarInformacion() {
-        System.out.println("\nInformación del Capimon:");
-        System.out.println("Nombre: " + getName());
-        System.out.println("Categoría: " + getCategory());
-        System.out.println("Energía: " + getEnergy());
-    }
-
 
     @Override
     public void attack() {
@@ -105,68 +88,5 @@ public class Capimon implements CapimonTypes {
             default:
                 throw new IllegalStateException("Categoría desconocida: " + getCategory());
         }
-
-        // Elegir ataque -- Esto debe ir en batalla
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Selecciona el ataque (0, 1 o 3): ");
-        int choice = scanner.nextInt();
-
-        // Lógica del ataque basado en la elección
-        switch (choice) {
-            case 0: // Ataque básico
-                System.out.println(getName() + " usa Placaje (-10 energía, -15 energía del enemigo).");
-                energy -= 10;
-                break;
-            case 1: // Primer ataque especial
-                switch (getCategory().toLowerCase()) {
-                    case "agua":
-                        System.out.println(getName() + " usa Escudo de burbujas (-20 energía, -30 energía del enemigo).");
-                        energy -= 20;
-                        break;
-                    case "fuego":
-                        System.out.println(getName() + " usa Pirotecnia (-20 energía, -30 energía del enemigo).");
-                        energy -= 20;
-                        break;
-                    case "planta":
-                        System.out.println(getName() + " usa Látigo cepa (-20 energía, -30 energía del enemigo).");
-                        energy -= 20;
-                        break;
-                }
-                break;
-            case 2:
-                switch (getCategory().toLowerCase()) {
-                    case "agua":
-                        System.out.println(getName() + " usa Pistola de agua (-40 energía, -60 energía del enemigo).");
-                        energy -= 40;
-                        break;
-                    case "fuego":
-                        System.out.println(getName() + " usa Lanzallamas (-80 energía, -90 energía del enemigo).");
-                        energy -= 80;
-                        break;
-                    case "planta":
-                        System.out.println(getName() + " usa Navaja afilada (-50 energía, -70 energía del enemigo).");
-                        energy -= 50;
-                        break;
-                }
-            case 3:
-                switch (getCategory().toLowerCase()) {
-                    case "agua":
-                        System.out.println(getName() + " usa defensa 1, retiene energia en ");
-                        energy -= 1; //pierde poca energia
-                        break;
-                    case "fuego":
-                        System.out.println(getName() + " usa defensa 1, retiene energia a");
-                        energy -= 1; //pierde poca energia
-                        break;
-                    case "planta":
-                        System.out.println(getName() + " usa defensa 1, retiene energia");
-                        energy -= 1; //pierde poca energia
-                        break;
-                }
-                break;
-            default:
-                System.out.println("Opción inválida.");
-        }
     }
 }
-
