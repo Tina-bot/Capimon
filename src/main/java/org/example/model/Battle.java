@@ -11,26 +11,29 @@ public class Battle {
     private Capimon playerCapi;
     private Capimon enemyCapi;
     private ArrayList<Capimon> originalCapimons;
+    private int initialEnergyAli;
+    private int initialEnergyenemy;
+
+
+
 
     public Battle(Coach playerCoach, Capimon playerCapi, Capimon enemyCapi) {
         this.playerCoach = playerCoach;
         this.playerCapi = playerCapi;
         this.enemyCapi = enemyCapi;
+        this.initialEnergyAli = playerCapi.getEnergy();
+        this.initialEnergyenemy = enemyCapi.getEnergy();
         this.originalCapimons = new ArrayList<>(playerCoach.getCapimonsUser());
     }
 
     private void resetBattle() {
         System.out.println("\nPerdiste :(, tu Capimon será llevado al hospital. 🏥");
-        playerCapi.setEnergy(100);
-        if (enemyCapi.getName().equals("Capishadow")) {
-            enemyCapi.setEnergy(300);
-        } else {
-            enemyCapi.setEnergy(100);
-        }
+        playerCapi.setEnergy(initialEnergyAli);
+        enemyCapi.setEnergy(initialEnergyenemy);
         playerCapi.levelUp(1);
         System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getLevel());
 
-        //Pausa
+        // Pausa
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n");
         System.out.println("Presiona 'Enter' para continuar ...");
@@ -53,8 +56,8 @@ public class Battle {
             if (battleResult) {
                 System.out.println("\nGanaste, muy bien! ⭐");
                 playerCoach.setCapimonsUser(enemyCapi);
-                System.out.println("Se te unio " + enemyCapi.getName() + ", felicidades");
-                System.out.println("Tu lista actulizada: " + playerCoach.getCapimonsUser());
+                System.out.println("Se te unió " + enemyCapi.getName() + ", felicidades");
+                System.out.println("Tu lista actualizada: " + playerCoach.getCapimonsUser());
                 break;
             } else {
                 if (playerCoach.getCapimonsUser().size() > 1) {
@@ -62,7 +65,11 @@ public class Battle {
                     playerCapi = playerCoach.getNextCapimon();
                     System.out.println("\nDerrotado, ahora luchas con " + playerCapi.getName());
                 } else {
-                    resetBattle(); //si no quedan mas
+                    if (playerCoach.getCapimonsUser().isEmpty()) {
+                        System.out.println("Te quedaste sin Capimons. ¡La batalla ha terminado!");
+                        break;
+                    }
+                    resetBattle();
                 }
             }
         }
@@ -77,22 +84,26 @@ public class Battle {
             System.out.println(enemyCapi.getName() + " [Enemigo] - Vida: " + enemyCapi.getEnergy());
 
             if (playerStarts) {
-                // turno jugador
-                System.out.println("\nEs tu turno, Qué ataque querés usar?");
-                System.out.println("1 - Ataque basico");
-                System.out.println("2 - Ataque especial");
-                System.out.println("Tu elección: ");
-                int choice = scanner.nextInt();
-
-                switch (choice) {
-                    case 1:
-                        attack(playerCapi, enemyCapi, false, playerCapi.getLevel());
-                        break;
-                    case 2:
-                        attack(playerCapi, enemyCapi, true, playerCapi.getLevel());
-                        break;
-                    default:
-                        System.out.println("Elección invalida, perdes el turno.");
+                // Turno jugador
+                int choice = -1;
+                while (choice != 1 && choice != 2) {
+                    try {
+                        System.out.println("\nEs tu turno, Qué ataque querés usar?");
+                        System.out.println("1 - Ataque básico");
+                        System.out.println("2 - Ataque especial");
+                        System.out.println("Tu elección: ");
+                        choice = scanner.nextInt();
+                        if (choice == 1) {
+                            attack(playerCapi, enemyCapi, false, playerCapi.getLevel());
+                        } else if (choice == 2) {
+                            attack(playerCapi, enemyCapi, true, playerCapi.getLevel());
+                        } else {
+                            System.out.println("Elección inválida. Por favor, ingresa 1 o 2.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Entrada inválida. Ingresa un número (1 o 2).");
+                        scanner.nextLine(); // Limpiar el buffer del scanner
+                    }
                 }
                 if (enemyCapi.getEnergy() <= 0) {
                     return true; // jugador gana
@@ -100,13 +111,14 @@ public class Battle {
             } else {
                 // Turno del enemigo
                 System.out.println("\nEs turno del enemigo.");
-                attack(enemyCapi, playerCapi, false, 3);
+                boolean isSpecialAttack = new Random().nextBoolean(); // 50% probabilidad
+                attack(enemyCapi, playerCapi, isSpecialAttack, 3);
                 if (playerCapi.getEnergy() <= 0) {
                     return false; // El enemigo gana
                 }
             }
 
-            // quien empieza en la próxima ronda
+            // Quién empieza en la próxima ronda
             playerStarts = !playerStarts;
         }
         return false;
@@ -114,23 +126,23 @@ public class Battle {
 
     private void attack(Capimon attacker, Capimon target, boolean isSpecial, int lvl) {
         Random luck = new Random();
-        boolean miss = luck.nextInt(100)<10;
-        boolean isCritic = luck.nextInt(100)<25;
+        boolean miss = luck.nextInt(100) < 10;
+        boolean isCritic = luck.nextInt(100) < 25;
 
-        if (miss){
+        if (miss) {
             System.out.println(attacker.getName() + " ha fallado");
             return;
         }
 
         int damage = CapimonTypeDmg.calculateDamage(attacker.getCategory(), target.getCategory(), isSpecial);
 
-        if (isCritic){
-            damage *=2;
-            System.out.println( attacker.getName() + " ha realizado un ataque crítico");
+        if (isCritic) {
+            damage *= 1.5; // Ajusta el crítico para que sea menos desbalanceado
+            System.out.println(attacker.getName() + " ha realizado un ataque crítico");
         }
 
-        target.setEnergy(target.getEnergy() - damage * lvl / 2);
+        int remainingEnergy = target.getEnergy() - (damage * lvl / 2);
+        target.setEnergy(Math.max(remainingEnergy, 0)); // Asegura que la energía mínima sea 0
         System.out.println(attacker.getName() + " ataca haciendo " + damage + " de daño a " + target.getName());
-
     }
 }

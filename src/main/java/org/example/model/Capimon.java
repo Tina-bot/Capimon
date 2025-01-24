@@ -50,7 +50,6 @@ public class Capimon implements CapimonTypes {
         return category;
     }
 
-    // Validación de los tipos de capimones
     public void setCategory(String category) {
         if (category.equalsIgnoreCase("agua")) {
             this.category = "agua";
@@ -75,6 +74,7 @@ public class Capimon implements CapimonTypes {
     public void levelUp(int newLevel) {
         level += newLevel;
     }
+
     public String showInformation() {
         return "Información del Capimon: " + "\nNombre: " + getName() + "\nCategoría: " + getCategory() + "\nEnergía: " + getEnergy() + "\nNivel: " + getLevel();
     }
@@ -87,7 +87,6 @@ public class Capimon implements CapimonTypes {
 
         System.out.println("\nAtaques disponibles:");
 
-        // Mostrar ataques específicos según el elemento
         switch (getCategory().toLowerCase()) {
             case "agua":
                 System.out.println("1. Escudo de burbujas (Ataque básico).");

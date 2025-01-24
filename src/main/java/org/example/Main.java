@@ -23,10 +23,8 @@ public class Main {
         Coach coach = new Coach();
         coach.setCapimonsUser(chispabara);
 
-        //Ingreso Nickname
         coach.setWelcomeMessage();
 
-        //Incorporación de capibaras al usuario
         coach.getCapimonsUser();
         System.out.println("Capimones del usuario: " + coach.getCapimonsUser().toString());
 
