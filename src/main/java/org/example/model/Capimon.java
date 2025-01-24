@@ -6,6 +6,7 @@ public class Capimon implements CapimonTypes {
     private String name;
     private String category;
     private int energy = 0;
+    private int nivel = 0;
 
     public Capimon() {
 
@@ -15,9 +16,10 @@ public class Capimon implements CapimonTypes {
         return name;
     }
 
-    public Capimon(int energy, String category) {
+    public Capimon(int energy, String category, int nivel) {
         setCategory(category);
         this.energy = energy;
+        this.nivel = nivel;
     }
 
     public String getName() {
@@ -36,6 +38,14 @@ public class Capimon implements CapimonTypes {
         this.energy = energy;
     }
 
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
     public String getCategory() {
         return category;
     }
@@ -44,26 +54,30 @@ public class Capimon implements CapimonTypes {
     public void setCategory(String category) {
         if (category.equalsIgnoreCase("agua")) {
             this.category = "agua";
-            this.name = "Aquabara";
+            this.name = "Aquabara \uD83D\uDCA7";
         } else if (category.equalsIgnoreCase("fuego")) {
             this.category = "fuego";
-            this.name = "Capibrasas";
+            this.name = "Capibrasas \uD83D\uDD25";
         } else if (category.equalsIgnoreCase("planta")) {
             this.category = "planta";
-            this.name = "Capibrotes";
+            this.name = "Capibrotes \uD83C\uDF43";
         } else if (category.equalsIgnoreCase("electrico")) {
             this.category = "electrico";
-            this.name = "Capielectrico";
+            this.name = "Chispabara \uD83C\uDF87";
         } else if (category.equalsIgnoreCase("oscuro")) {
             this.category = "oscuro";
-            this.name = "Capishadow";
+            this.name = "Capishadow \uD83C\uDF11";
         } else {
             throw new IllegalArgumentException("Categoría inválida. Debe ser agua, fuego o planta.");
         }
     }
 
+    public void subirNivel() {
+        nivel++;
+    }
+
     public String showInformation() {
-        return "Información del Capimon: " + "\nNombre: " + getName() + "\nCategoría: " + getCategory() + "\nEnergía: " + getEnergy();
+        return "Información del Capimon: " + "\nNombre: " + getName() + "\nCategoría: " + getCategory() + "\nEnergía: " + getEnergy() + "\nNivel: " + getNivel();
     }
 
     @Override
@@ -73,28 +87,26 @@ public class Capimon implements CapimonTypes {
         }
 
         System.out.println("\nAtaques disponibles:");
-        System.out.println("0. Placaje (Resta 10 energía, -15 energía del enemigo)."); // Ataque básico
 
         // Mostrar ataques específicos según el elemento
         switch (getCategory().toLowerCase()) {
             case "agua":
-                System.out.println("1. Escudo de burbujas (-20 energía, -30 energía del enemigo).");
-                System.out.println("2. Pistola de agua (-40 energía, -60 energía del enemigo).");
+                System.out.println("1. Escudo de burbujas (Ataque básico).");
+                System.out.println("2. Pistola de agua (Ataque especial).");
                 break;
             case "fuego":
-                System.out.println("1. Pirotecnia (-20 energía, -30 energía del enemigo).");
-                System.out.println("2. Lanzallamas (-80 energía, -90 energía del enemigo).");
+                System.out.println("1. Pirotecnia (Ataque básico).");
+                System.out.println("2. Lanzallamas (Ataque especial).");
                 break;
             case "planta":
-                System.out.println("1. Látigo cepa (-20 energía, -30 energía del enemigo).");
-                System.out.println("2. Navaja afilada (-50 energía, -70 energía del enemigo).");
+                System.out.println("1. Látigo cepa (Ataque básico).");
+                System.out.println("2. Navaja afilada (Ataque especial).");
                 break;
             case "electrico":
-                System.out.println("1. electrico 1 ");
-                System.out.println("2. electrico 2");
+                System.out.println("1. Chispa Danzante (Ataque básico).");
+                System.out.println("2. Descarga Relámpago (Ataque especial).");
                 break;
             case "oscuro":
-                System.out.println("0. Placaje (Resta 10 energía, -15 energía del enemigo).");
                 System.out.println("1. Cofre explosivo (Resta 0 energía, -99 vida).");
                 System.out.println("2. Cataclismo unitario (Resta 0 energía, -150 vida).");
             default:

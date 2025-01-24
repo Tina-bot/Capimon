@@ -25,7 +25,9 @@ public class Battle {
         } else {
             enemyCapi.setEnergy(100);
         }
-        System.out.println("\nEnergia restaurada. La batalla se reinicia!");
+        playerCapi.subirNivel();
+        System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getNivel());
+        System.out.println(" La batalla se reinicia!");
     }
 
 
@@ -98,7 +100,7 @@ public class Battle {
         int damage = CapimonTypeDmg.calculateDamage(attacker.getCategory(), target.getCategory(), isSpecial);
         target.setEnergy(target.getEnergy() - damage * lvl/2);
         System.out.println(attacker.getName() + " ataca haciendo " + damage + " de daño a "
-                + target.getName()+ " damage/lvl "+ (damage * lvl/2));
+                + target.getName());
     }
 
 }
