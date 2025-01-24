@@ -1,3 +1,4 @@
+
 package org.example.model;
 
 import org.example.service.CapimonTypeDmg;
@@ -28,8 +29,15 @@ public class Battle {
         }
         playerCapi.levelUp();
         System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getNivel());
-        System.out.println("La batalla se reinicia con el equipo original.");
 
+        //Pausa
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n");
+        System.out.println("Presiona 'Enter' para continuar ...");
+        scanner.nextLine();
+
+        System.out.println(" La batalla se reinicia!");
+        System.out.println("La batalla se reinicia con el equipo original.");
         playerCoach.getCapimonsUser().clear();
         playerCoach.getCapimonsUser().addAll(originalCapimons);
     }
