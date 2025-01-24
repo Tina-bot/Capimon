@@ -13,7 +13,7 @@ public class CapimonTypeDmg {
             return 2;
         } else if ( attackType.equals("planta") &&  targetType.equals("agua")){
             return 2;
-        } else if ( attackType.equals("oscuro") || targetType.equals("agua") || targetType.equals("fuego") || targetType.equals("planta")) {
+        } else if ( attackType.equals("oscuro") && targetType.equals("agua") || attackType.equals("oscuro") && targetType.equals("fuego") ||attackType.equals("oscuro") && targetType.equals("planta")) {
             return 2;
         } else if (attackType.equals(targetType)) {
             return 1;
