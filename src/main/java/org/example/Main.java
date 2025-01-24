@@ -43,14 +43,14 @@ public class Main {
             if (i == 0) {
                 enemy.levelUp(0);
             } else if (i == 1) {
-                enemy.levelUp(4);
-                enemy.setEnergy(enemy.getEnergy() + 40);
+                enemy.levelUp(2);
+                enemy.setEnergy(enemy.getEnergy() + 10);
             } else if (i == 2) {
-                enemy.levelUp(8);
-                enemy.setEnergy(enemy.getEnergy() + 80);
+                enemy.levelUp(3);
+                enemy.setEnergy(enemy.getEnergy() + 20);
             } else if (i == 3) {
-                enemy.levelUp(10);
-                enemy.setEnergy(enemy.getEnergy() + 100);
+                enemy.levelUp(4);
+                enemy.setEnergy(enemy.getEnergy() + 26);
             }
 
             System.out.println("Batalla " + (i + 1) + ": ¡" + enemy.getName() + " ahora está en el nivel " + enemy.getLevel() + "!");

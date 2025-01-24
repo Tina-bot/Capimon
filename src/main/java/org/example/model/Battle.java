@@ -3,6 +3,7 @@ package org.example.model;
 import org.example.service.CapimonTypeDmg;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Battle {
@@ -112,8 +113,24 @@ public class Battle {
     }
 
     private void attack(Capimon attacker, Capimon target, boolean isSpecial, int lvl) {
+        Random luck = new Random();
+        boolean miss = luck.nextInt(100)<10;
+        boolean isCritic = luck.nextInt(100)<25;
+
+        if (miss){
+            System.out.println(attacker.getName() + " ha fallado");
+            return;
+        }
+
         int damage = CapimonTypeDmg.calculateDamage(attacker.getCategory(), target.getCategory(), isSpecial);
+
+        if (isCritic){
+            damage *=2;
+            System.out.println( attacker.getName() + " ha realizado un ataque crítico");
+        }
+
         target.setEnergy(target.getEnergy() - damage * lvl / 2);
         System.out.println(attacker.getName() + " ataca haciendo " + damage + " de daño a " + target.getName());
+
     }
 }
