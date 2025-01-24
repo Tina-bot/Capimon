@@ -26,7 +26,7 @@ public class Battle {
             enemyCapi.setEnergy(100);
         }
         playerCapi.levelUp();
-        System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getNivel());
+        System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getLevel());
         System.out.println(" La batalla se reinicia!");
     }
 
