@@ -38,11 +38,28 @@ public class Main {
 
         System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n");
 
-        for (int i = 0; i <= typesCapimons.size(); i++) {
+
+        for (int i = 0; i < typesCapimons.size(); i++) {
             Capimon enemy = typesCapimons.get(i);
+
+            if (i == 0) {
+                enemy.levelUp(0);
+            } else if (i == 1) {
+                enemy.levelUp(4);
+                enemy.setEnergy(enemy.getEnergy() + 40);
+            } else if (i == 2) {
+                enemy.levelUp(8);
+                enemy.setEnergy(enemy.getEnergy() + 80);
+            } else if (i == 3) {
+                enemy.levelUp(10);
+                enemy.setEnergy(enemy.getEnergy() + 100);
+            }
+
+            System.out.println("Batalla " + (i + 1) + ": ¡" + enemy.getName() + " ahora está en el nivel " + enemy.getLevel() + "!");
+            System.out.println("Energía actualizada: " + enemy.getEnergy());
+
             Battle battle = new Battle(coach, chispabara, enemy);
             battle.startBattle();
         }
-
     }
 }

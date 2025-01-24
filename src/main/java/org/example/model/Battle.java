@@ -26,8 +26,8 @@ public class Battle {
         } else {
             enemyCapi.setEnergy(100);
         }
-        playerCapi.levelUp();
-        System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getNivel());
+        playerCapi.levelUp(1);
+        System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getLevel());
         System.out.println("La batalla se reinicia con el equipo original.");
 
         playerCoach.getCapimonsUser().clear();
@@ -78,10 +78,10 @@ public class Battle {
 
                 switch (choice) {
                     case 1:
-                        attack(playerCapi, enemyCapi, false, playerCapi.getNivel());
+                        attack(playerCapi, enemyCapi, false, playerCapi.getLevel());
                         break;
                     case 2:
-                        attack(playerCapi, enemyCapi, true, playerCapi.getNivel());
+                        attack(playerCapi, enemyCapi, true, playerCapi.getLevel());
                         break;
                     default:
                         System.out.println("Elección invalida, perdes el turno.");

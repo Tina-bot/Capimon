@@ -6,7 +6,7 @@ public class Capimon implements CapimonTypes {
     private String name;
     private String category;
     private int energy = 0;
-    private int nivel = 0;
+    private int level = 0;
 
     public Capimon() {
 
@@ -16,10 +16,10 @@ public class Capimon implements CapimonTypes {
         return name;
     }
 
-    public Capimon(int energy, String category, int nivel) {
+    public Capimon(int energy, String category, int level) {
         setCategory(category);
         this.energy = energy;
-        this.nivel = nivel;
+        this.level = level;
     }
 
     public String getName() {
@@ -38,12 +38,12 @@ public class Capimon implements CapimonTypes {
         this.energy = energy;
     }
 
-    public int getNivel() {
-        return nivel;
+    public int getLevel() {
+        return level;
     }
 
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public String getCategory() {
@@ -72,12 +72,11 @@ public class Capimon implements CapimonTypes {
         }
     }
 
-    public void levelUp() {
-        nivel++;
+    public void levelUp(int newLevel) {
+        level += newLevel;
     }
-
     public String showInformation() {
-        return "Información del Capimon: " + "\nNombre: " + getName() + "\nCategoría: " + getCategory() + "\nEnergía: " + getEnergy() + "\nNivel: " + getNivel();
+        return "Información del Capimon: " + "\nNombre: " + getName() + "\nCategoría: " + getCategory() + "\nEnergía: " + getEnergy() + "\nNivel: " + getLevel();
     }
 
     @Override
