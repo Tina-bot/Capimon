@@ -10,36 +10,34 @@ public class Battle {
     private Coach playerCoach;
     private Capimon playerCapi;
     private Capimon enemyCapi;
-    private ArrayList<Capimon> originalCapimons;
-    private int initialEnergyAli;
-    private int initialEnergyenemy;
-
-
-
+    private ArrayList<Capimon> originalCapimons; //segui
+    private int initialAllyEnergy;
+    private int initialEnemyEnergy;
 
     public Battle(Coach playerCoach, Capimon playerCapi, Capimon enemyCapi) {
         this.playerCoach = playerCoach;
         this.playerCapi = playerCapi;
         this.enemyCapi = enemyCapi;
-        this.initialEnergyAli = playerCapi.getEnergy();
-        this.initialEnergyenemy = enemyCapi.getEnergy();
         this.originalCapimons = new ArrayList<>(playerCoach.getCapimonsUser());
+        this.initialAllyEnergy = 100;
+        this.initialEnemyEnergy = enemyCapi.getEnergy();
     }
-
+    private void resetEnergy(){
+        playerCapi.resetEnergy(initialAllyEnergy);
+        enemyCapi.resetEnergy((initialEnemyEnergy));
+    }
     private void resetBattle() {
         System.out.println("\nPerdiste :(, tu Capimon será llevado al hospital. 🏥");
-        playerCapi.setEnergy(initialEnergyAli);
-        enemyCapi.setEnergy(initialEnergyenemy);
         playerCapi.levelUp(1);
         System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getLevel());
 
-        // Pausa
+        resetEnergy();
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n");
         System.out.println("Presiona 'Enter' para continuar ...");
         scanner.nextLine();
 
-        System.out.println(" La batalla se reinicia!");
         System.out.println("La batalla se reinicia con el equipo original.");
         playerCoach.getCapimonsUser().clear();
         playerCoach.getCapimonsUser().addAll(originalCapimons);
@@ -57,6 +55,7 @@ public class Battle {
                 System.out.println("\nGanaste, muy bien! ⭐");
                 playerCoach.setCapimonsUser(enemyCapi);
                 System.out.println("Se te unió " + enemyCapi.getName() + ", felicidades");
+                resetEnergy();
                 System.out.println("Tu lista actualizada: " + playerCoach.getCapimonsUser());
                 break;
             } else {
@@ -111,14 +110,14 @@ public class Battle {
             } else {
                 // Turno del enemigo
                 System.out.println("\nEs turno del enemigo.");
-                boolean isSpecialAttack = new Random().nextBoolean(); // 50% probabilidad
+                boolean isSpecialAttack = new Random().nextBoolean();
                 attack(enemyCapi, playerCapi, isSpecialAttack, 3);
                 if (playerCapi.getEnergy() <= 0) {
-                    return false; // El enemigo gana
+                    resetEnergy();
+                    return false;
                 }
             }
 
-            // Quién empieza en la próxima ronda
             playerStarts = !playerStarts;
         }
         return false;
@@ -137,12 +136,12 @@ public class Battle {
         int damage = CapimonTypeDmg.calculateDamage(attacker.getCategory(), target.getCategory(), isSpecial);
 
         if (isCritic) {
-            damage *= 1.5; // Ajusta el crítico para que sea menos desbalanceado
+            damage *= 1.5;
             System.out.println(attacker.getName() + " ha realizado un ataque crítico");
         }
 
         int remainingEnergy = target.getEnergy() - (damage * lvl / 2);
-        target.setEnergy(Math.max(remainingEnergy, 0)); // Asegura que la energía mínima sea 0
+        target.setEnergy(Math.max(remainingEnergy, 0));
         System.out.println(attacker.getName() + " ataca haciendo " + damage + " de daño a " + target.getName());
     }
 }

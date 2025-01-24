@@ -74,7 +74,9 @@ public class Capimon implements CapimonTypes {
     public void levelUp(int newLevel) {
         level += newLevel;
     }
-
+    public void resetEnergy(int energy){
+        this.energy=energy;
+    }
     public String showInformation() {
         return "Información del Capimon: " + "\nNombre: " + getName() + "\nCategoría: " + getCategory() + "\nEnergía: " + getEnergy() + "\nNivel: " + getLevel();
     }

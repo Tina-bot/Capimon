@@ -12,7 +12,7 @@ public class Main {
         Capimon capibrote = new Capimon(100, "planta", 1);
         Capimon capibrasa = new Capimon(100, "fuego", 1);
         Capimon aquabara = new Capimon(100, "agua", 1);
-        Capimon capishadow = new Capimon(300, "oscuro", 1);
+        Capimon capishadow = new Capimon(160, "oscuro", 1);
 
         typesCapimons = new ArrayList<>();
         typesCapimons.add(capibrote);
@@ -23,8 +23,10 @@ public class Main {
         Coach coach = new Coach();
         coach.setCapimonsUser(chispabara);
 
+        //Ingreso Nickname
         coach.setWelcomeMessage();
 
+        //Incorporación de capibaras al usuario
         coach.getCapimonsUser();
         System.out.println("Capimones del usuario: " + coach.getCapimonsUser().toString());
 
@@ -48,7 +50,7 @@ public class Main {
                 enemy.setEnergy(enemy.getEnergy() + 20);
             } else if (i == 3) {
                 enemy.levelUp(4);
-                enemy.setEnergy(enemy.getEnergy() + 26);
+                enemy.setEnergy(enemy.getEnergy() + 40);
             }
 
             System.out.println("Batalla " + (i + 1) + ": ¡" + enemy.getName() + " ahora está en el nivel " + enemy.getLevel() + "!");
