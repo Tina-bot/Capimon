@@ -1,14 +1,15 @@
 package org.example.model;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.HashSet;
 
 public class Coach {
     private String name;
-    private HashSet<Capimon> capimonsUser;
+    private ArrayList<Capimon> capimonsUser;
 
     public Coach() {
-        this.capimonsUser = new HashSet<>();
+        this.capimonsUser = new ArrayList<>();
     }
 
     public String getName() {
@@ -49,7 +50,7 @@ public class Coach {
         capimonsUser.add(capimonNew);
     }
 
-    public HashSet<Capimon> getCapimonsUser() {
+    public ArrayList<Capimon> getCapimonsUser() {
         return capimonsUser;
     }
 }
