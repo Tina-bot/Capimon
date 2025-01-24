@@ -1,47 +1,43 @@
 package org.example;
 
-import org.example.model.Capimon;
-import org.example.service.utilities.CreateObjects;
+import org.example.model.*;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
         Coach coach = new Coach();
+//        Capimon enemy = new Capimon(100, "fuego");
+//        Capimon ally = new Capimon(100, "planta");
 
         //Ingreso Nickname
+/*
         coach.setWelcomeMessage();
-
+*/
+      Capimon character = Coach.assignCharacter(coach);
+        character.subirNivel();
+        character.subirNivel();
+        System.out.println(character.showInformation());
         //Asignación de personaje al usuario con metodo random
-        String character = Coach.assignCharacter(coach);
-        System.out.println("");
-        System.out.println("Capibara asignado: " + character);
+/*        Capimon character = Coach.assignCharacter(coach);
+        System.out.println(" ");
+        System.out.println("Capibara asignado: " + character.getName());
+        System.out.println(character.showInformation());*/
 
         //Incorporación de capibaras al usuario
+/*        coach.setCapimonsUser(character);
+        System.out.println("Capimones del usuario: " + coach.getCapimonsUser().toString());
+        character.attack();
+
         coach.setCapimonsUser(character);
-        System.out.println("Capibaras del usuario: " + coach.getCapimonsUser());
+        System.out.println("_______________________");
 
-        /*
-        Comentario de código de batallas ---
+        ArrayList<Capimon> enemies = coach.getTypesCapimons();
+        for(int i = 0; i <= enemies.size(); i++) {
+            Capimon enemy = enemies.get(i);
+            Battle battle = new Battle(coach, character, enemy);
+            battle.startBattle();
+        }*/
 
-        HashSet<Capimon> capis = new HashSet();
-        Capiwater blas = new Capiwater("Blas", 200, 300, true);
-        Capifire fuegui = new Capifire("Fuegui", 400, 400, true);
-        Capiwater tipito = new Capiwater("Tipito", 200, 300, true);
-
-        Battle pelea1 = new Battle(blas, fuegui);
-        boolean battleWin = false;
-        while (!battleWin) {
-            battleWin = pelea1.StartBattle();
-        }
-        capis.add(fuegui);
-        System.out.println("Ganaste, Te agarraste un capi nuevo");
-
-        Battle pelea2 = new Battle(blas, tipito);
-        boolean battleWin2 = false;
-        while (!battleWin2) {
-            battleWin2 = pelea2.StartBattle();
-        }
-        capis.add(tipito);
-        System.out.println("Ganaste la segunda, segundo capi añadido");
-        */
     }
 }

@@ -7,15 +7,23 @@ import java.util.Random;
 
 public class Coach {
     private String name;
-    private ArrayList<String> typesCapimons;
-    private HashSet<String> capimonsUser;
+    private ArrayList<Capimon> typesCapimons;
+    private HashSet<Capimon> capimonsUser;
+
+    Capimon capibrote = new Capimon(100, "planta", 0);
+    Capimon capibrasa = new Capimon(100, "fuego", 0);
+    Capimon aquabara = new Capimon(100, "agua", 0);
+    Capimon chispabara = new Capimon(100, "eléctrico", 0);
+    Capimon capishadow = new Capimon(100, "oscuro", 0);
 
     public Coach() {
         this.typesCapimons = new ArrayList<>();
         this.capimonsUser = new HashSet<>();
-        typesCapimons.add("Aquabara");
-        typesCapimons.add("Capibrasas");
-        typesCapimons.add("Capibrote");
+        typesCapimons.add(capibrote);
+        typesCapimons.add(capibrasa);
+        typesCapimons.add(aquabara);
+        typesCapimons.add(chispabara);
+        typesCapimons.add(capishadow);
     }
 
     public String getName() {
@@ -41,17 +49,21 @@ public class Coach {
                 " te asignamos a tu compañero Capimon para que te acompañe durante el viaje. ¡Mucha suerte!");
     }
 
-    public static String assignCharacter(Coach coach) {
-        Random random = new Random();
-        int index = random.nextInt(coach.typesCapimons.size());
-        return coach.typesCapimons.get(index);
+    public static Capimon assignCharacter(Coach coach) {
+            Random random = new Random();
+            int index = random.nextInt(3);
+            return coach.typesCapimons.get(index);
     }
 
-    public void setCapimonsUser(String capimonNew) {
+    public ArrayList<Capimon> getTypesCapimons() {
+        return typesCapimons;
+    }
+
+    public void setCapimonsUser(Capimon capimonNew) {
         capimonsUser.add(capimonNew);
     }
 
-    public HashSet<String> getCapimonsUser() {
+    public HashSet<Capimon> getCapimonsUser() {
         return capimonsUser;
     }
 }
