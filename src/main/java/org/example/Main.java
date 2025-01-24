@@ -30,8 +30,7 @@ public class Main {
         coach.getCapimonsUser();
         System.out.println("Capimones del usuario: " + coach.getCapimonsUser().toString());
 
-        System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n" +
-                " ");
+        System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n");
 
         System.out.println(chispabara.showInformation());
         chispabara.attack();
@@ -44,6 +43,8 @@ public class Main {
             battle.startBattle();
         }
 
-        System.out.println("\nFINAL\n");
+        System.out.println("\n¡Felicidades " + coach.getName() + "! Has derrotado a Capishadow y completado tu aventura.");
+        System.out.println("Has demostrado ser un gran entrenador de Capimones. ¡Gracias por jugar!");
+        System.out.println("¡Nos vemos en la próxima aventura!");
     }
 }

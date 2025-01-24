@@ -33,10 +33,9 @@ public class Battle {
         System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n");
         System.out.println("Presiona 'Enter' para continuar ...");
         scanner.nextLine();
-        
+
         System.out.println(" La batalla se reinicia!");
     }
-
 
     public void startBattle() {
         Scanner scanner = new Scanner(System.in);
