@@ -51,7 +51,10 @@ public class Capimon implements CapimonTypes {
         } else if (category.equalsIgnoreCase("planta")) {
             this.category = "planta";
             this.name = "Capibrotes";
-        }else if (category.equalsIgnoreCase("oscuro")) {
+        } else if (category.equalsIgnoreCase("electrico")) {
+            this.category = "electrico";
+            this.name = "Capielectrico";
+        } else if (category.equalsIgnoreCase("oscuro")) {
             this.category = "oscuro";
             this.name = "Capishadow";
         } else {
@@ -85,6 +88,10 @@ public class Capimon implements CapimonTypes {
             case "planta":
                 System.out.println("1. Látigo cepa (-20 energía, -30 energía del enemigo).");
                 System.out.println("2. Navaja afilada (-50 energía, -70 energía del enemigo).");
+                break;
+            case "electrico":
+                System.out.println("1. electrico 1 ");
+                System.out.println("2. electrico 2");
                 break;
             case "oscuro":
                 System.out.println("0. Placaje (Resta 10 energía, -15 energía del enemigo).");
