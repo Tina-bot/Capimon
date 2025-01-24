@@ -71,9 +71,11 @@ public class Capimon implements CapimonTypes {
             throw new IllegalArgumentException("Categoría inválida. Debe ser agua, fuego o planta.");
         }
     }
+
     public void subirNivel() {
         nivel++;
     }
+
     public String showInformation() {
         return "Información del Capimon: " + "\nNombre: " + getName() + "\nCategoría: " + getCategory() + "\nEnergía: " + getEnergy() + "\nNivel: " + getNivel();
     }
