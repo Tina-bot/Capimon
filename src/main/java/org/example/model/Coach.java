@@ -18,7 +18,18 @@ public class Coach {
     public void setName(String name) {
         this.name = name;
     }
-
+    public void removeFirstCapimon() {
+        if (!capimonsUser.isEmpty()) {
+            capimonsUser.remove(capimonsUser.iterator().next());}
+    }
+    public Capimon getNextCapimon() {
+        if (!capimonsUser.isEmpty()) {
+            for (Capimon capimon : capimonsUser) {
+                return capimon;
+            }
+        }
+        return null;
+    }
     public void setWelcomeMessage() {
         System.out.println("¡Hola forastero! Veo que eres nuevo por aquí. ¿Cómo es tu nombre?");
         Scanner scanner = new Scanner(System.in);
