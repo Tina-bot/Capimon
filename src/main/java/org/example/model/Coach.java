@@ -1,27 +1,14 @@
 package org.example.model;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Random;
 
 public class Coach {
     private String name;
-    private ArrayList<Capimon> typesCapimons;
     private HashSet<Capimon> capimonsUser;
 
-    Capimon capibrote = new Capimon(100, "planta");
-    Capimon capibrasa = new Capimon(100, "fuego");
-    Capimon aquabara = new Capimon(100, "agua");
-    Capimon capishadow = new Capimon(300, "oscuro");
-
     public Coach() {
-        this.typesCapimons = new ArrayList<>();
         this.capimonsUser = new HashSet<>();
-        typesCapimons.add(capibrote);
-        typesCapimons.add(capibrasa);
-        typesCapimons.add(aquabara);
-        typesCapimons.add(capishadow);
     }
 
     public String getName() {
@@ -45,16 +32,6 @@ public class Coach {
 
         System.out.println("Pero tranquilo, no estarás solo: aquí" +
                 " te asignamos a tu compañero Capimon para que te acompañe durante el viaje. ¡Mucha suerte!");
-    }
-
-    public static Capimon assignCharacter(Coach coach) {
-            Random random = new Random();
-            int index = random.nextInt(3);
-            return coach.typesCapimons.get(index);
-    }
-
-    public ArrayList<Capimon> getTypesCapimons() {
-        return typesCapimons;
     }
 
     public void setCapimonsUser(Capimon capimonNew) {
