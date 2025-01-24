@@ -72,7 +72,7 @@ public class Capimon implements CapimonTypes {
         }
     }
 
-    public void subirNivel() {
+    public void levelUp() {
         nivel++;
     }
 
