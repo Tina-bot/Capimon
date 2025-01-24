@@ -38,11 +38,12 @@ public class Main {
 
         System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n");
 
-        for (int i = 0; i <= typesCapimons.size(); i++) {
+        for (int i = 0; i < typesCapimons.size(); i++) {
             Capimon enemy = typesCapimons.get(i);
             Battle battle = new Battle(coach, chispabara, enemy);
             battle.startBattle();
         }
 
+        System.out.println("\nFINAL\n");
     }
 }

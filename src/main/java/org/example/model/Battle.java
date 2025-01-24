@@ -27,6 +27,13 @@ public class Battle {
         }
         playerCapi.subirNivel();
         System.out.println("\nEnergia restaurada. Ha subido al nivel: " + playerCapi.getNivel());
+
+        //Pausa
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\n⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢⇢\n");
+        System.out.println("Presiona 'Enter' para continuar ...");
+        scanner.nextLine();
+        
         System.out.println(" La batalla se reinicia!");
     }
 
